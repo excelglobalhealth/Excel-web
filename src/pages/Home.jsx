@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useInView } from 'framer-motion';
 
 const SparkleIcon = () => (
   <svg 
@@ -262,30 +263,56 @@ const Home = () => {
       <section className="about-overview-section" aria-label="About Us Overview">
         <div className="about-overview-container">
           {/* Header Part */}
-          <div className="about-overview-header">
+          <motion.div
+            className="about-overview-header"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
             <h2 className="about-tag">About Us</h2>
             <h3 className="about-headline">
               Connecting Healthcare<br />
               Beyond Borders.
             </h3>
-          </div>
+          </motion.div>
 
-          {/* Horizontal dividing line under header spanning across */}
-          <div className="about-header-divider" />
+          {/* Horizontal dividing line — draws across on scroll */}
+          <motion.div
+            className="about-header-divider"
+            initial={{ scaleX: 0, originX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, amount: 0.8 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            style={{ transformOrigin: 'left' }}
+          />
 
           {/* Two-column Body */}
           <div className="about-body-grid">
             {/* Left description column */}
-            <div className="about-left-text">
+            <motion.div
+              className="about-left-text"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
+            >
               <p>
                 Excel Global Health helps healthcare manufacturers and distributors build meaningful connections across international markets. We bring together products, partners, and opportunities to support sustainable global growth.
               </p>
-            </div>
+            </motion.div>
 
             {/* Right feature rows column */}
             <div className="about-features-list">
               {/* Feature 1: Global Reach */}
-              <div className="about-feature-item">
+              <motion.div
+                className="about-feature-item"
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+                whileHover={{ x: 6, transition: { duration: 0.25 } }}
+              >
                 <div className="feature-icon-wrapper">
                   <SparkleIcon />
                 </div>
@@ -295,10 +322,17 @@ const Home = () => {
                     Connecting businesses with opportunities across international healthcare markets.
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Feature 2: Strategic Partnerships */}
-              <div className="about-feature-item">
+              <motion.div
+                className="about-feature-item"
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
+                whileHover={{ x: 6, transition: { duration: 0.25 } }}
+              >
                 <div className="feature-icon-wrapper">
                   <SparkleIcon />
                 </div>
@@ -308,10 +342,17 @@ const Home = () => {
                     Building strong relationships between manufacturers, distributors, and market partners.
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Feature 3: Market Growth */}
-              <div className="about-feature-item">
+              <motion.div
+                className="about-feature-item"
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.34 }}
+                whileHover={{ x: 6, transition: { duration: 0.25 } }}
+              >
                 <div className="feature-icon-wrapper">
                   <SparkleIcon />
                 </div>
@@ -321,7 +362,7 @@ const Home = () => {
                     Supporting companies as they launch, expand, and grow internationally.
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -331,15 +372,35 @@ const Home = () => {
       <section className="products-overview-section" aria-label="Healthcare Products Overview">
         <div className="products-overview-container">
           {/* Section Header */}
-          <div className="products-section-header">
+          <motion.div
+            className="products-section-header"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          >
             <h2 className="products-main-title">PRODUCTS</h2>
             <h3 className="products-sub-title">Healthcare Solutions for Diverse Markets.</h3>
-          </div>
+          </motion.div>
 
           {/* Products List Rows */}
           <div className="products-list-rows">
-            {productsData.map((product) => (
-              <div key={product.id} className="product-row-item">
+            {productsData.map((product, index) => (
+              <motion.div
+                key={product.id}
+                className="product-row-item"
+                initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}
+                whileHover={{
+                  backgroundColor: 'rgba(230, 81, 0, 0.025)',
+                  borderLeftColor: '#e65100',
+                  paddingLeft: '1rem',
+                  transition: { duration: 0.25 }
+                }}
+                style={{ borderLeft: '3px solid transparent', paddingLeft: '0rem', transition: 'padding-left 0.25s, border-left-color 0.25s' }}
+              >
                 {/* Left Side: Category Title and Explore Button */}
                 <div className="product-left-cell">
                   <h4 className="product-category-title">{product.title}</h4>
@@ -351,13 +412,19 @@ const Home = () => {
                 </div>
 
                 {/* Right Side: Long Orange Arrow and Description */}
-                <div className="product-right-cell">
+                <motion.div
+                  className="product-right-cell"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 + 0.25 }}
+                >
                   <div className="product-arrow-box">
                     <OrangeArrowIcon />
                   </div>
                   <p className="product-desc-text">{product.description}</p>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -374,26 +441,29 @@ const Home = () => {
                 Building Connections.<br />
                 Expanding Possibilities.
               </p>
-            </div>
-
-            <div className="partners-header-right">
-              <p className="partners-description-para">
+              <p className="partners-description-para" style={{ marginTop: '1.5rem' }}>
                 We work with trusted international partners to connect quality healthcare products with new markets and opportunities around the world.
               </p>
             </div>
           </div>
 
-          {/* Flags Row */}
+          {/* Flags Row — click to navigate to Partners page filtered by country */}
           <div className="partners-flags-row">
             {partnersFlags.map((partner) => (
-              <div key={partner.country} className="partner-flag-card">
-                <img 
-                  src={partner.flag} 
-                  alt={`Flag of ${partner.country}`} 
+              <Link
+                key={partner.country}
+                to={`/partners#${partner.country.toLowerCase().replace(/\s+/g, '-')}`}
+                className="partner-flag-card"
+                title={`View distributors in ${partner.country}`}
+              >
+                <img
+                  src={partner.flag}
+                  alt={`Flag of ${partner.country}`}
                   className="partner-flag-img"
                   loading="lazy"
                 />
-              </div>
+                <span className="partner-flag-label">{partner.country}</span>
+              </Link>
             ))}
           </div>
         </div>
