@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import logo from '../../assets/logo.png';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -34,10 +35,10 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        {/* Center Section: Excel Global Health */}
+        {/* Center Section: Logo */}
         <div className="nav-section center-section">
-          <Link to="/" className="nav-brand-title" onClick={closeMobileMenu} id="nav-brand-logo">
-            Excel Global Health
+          <Link to="/" className="nav-brand-logo-link" onClick={closeMobileMenu} id="nav-brand-logo">
+            <img src={logo} alt="Excel Global Health" className="nav-brand-logo-img" />
           </Link>
         </div>
 
