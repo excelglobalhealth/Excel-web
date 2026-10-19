@@ -82,6 +82,22 @@ const heroSlides = [
     image: '/assets/Banner_3.jpeg',
     alt: 'Rubit - Complete Pain Management',
     link: '/products#pain'
+  },
+  {
+    id: 'banner-4',
+    type: 'banner',
+    duration: 3000,
+    image: '/assets/Atrimed.jpeg',
+    alt: 'Sorion & Atrimed Biotech — Plant-Based Biotechnology',
+    link: '/products#otc'
+  },
+  {
+    id: 'banner-5',
+    type: 'banner',
+    duration: 3000,
+    image: '/assets/GroupPharma.jpeg',
+    alt: 'Group Pharmaceuticals Limited — Healthy Smiles Matter',
+    link: '/products#otc'
   }
 ];
 
@@ -121,11 +137,11 @@ const productsData = [
   },
   {
     id: 'otc',
-    title: 'OTC',
+    title: 'OTC & General Pharma',
     description: (
       <>
-        Discover effective solutions designed to support pain relief, comfort, and everyday mobility.<br />
-        Explore products developed to address a range of pain management needs.
+        Discover trusted over-the-counter solutions, Sorion phytobiotechnology,<br />
+        and specialized oral care from Group Pharmaceuticals.
       </>
     ),
     link: '/products#otc'
